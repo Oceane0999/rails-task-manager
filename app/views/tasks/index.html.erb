@@ -4,7 +4,11 @@
   <% @tasks.each do |task| %>
     <li>
       <%= link_to task.title, task_path(task) %>:
-      <%= task.completed %>
+      <% if task.completed == true %>
+      <%= "Done" %>
+      <% else %>
+      <%= "Not done" %>
+      <% end %>
       <%= link_to "Delete", task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
     </li>
   <% end %>
